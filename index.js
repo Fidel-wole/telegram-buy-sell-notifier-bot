@@ -29,13 +29,13 @@ const monitorTransactions = async () => {
     const latestBlock = await web3.eth.getBlock('latest', true);
 
     for (const tx of latestBlock.transactions) {
-      const valueInWei = BigInt(tx.value);  // Ensure this is BigInt
+      const valueInWei = BigInt(tx.value); 
       const txDetails = {
         hash: tx.hash,
         from: tx.from,
         to: tx.to,
-        value: web3.utils.fromWei(valueInWei.toString(), 'ether'),  // Convert BigInt to string for fromWei
-        timestamp: new Date(Number(latestBlock.timestamp) * 1000).toISOString(),  // Ensure timestamp is a number
+        value: web3.utils.fromWei(valueInWei.toString(), 'ether'),  
+        timestamp: new Date(Number(latestBlock.timestamp) * 1000).toISOString(),  
       };
 
       // Placeholder logic for buy/sell detection
